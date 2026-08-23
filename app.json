@@ -37,6 +37,17 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "df5a3973-8ffa-4998-9313-7e40a2e8840f"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/df5a3973-8ffa-4998-9313-7e40a2e8840f"
+    },
+    "runtimeVersion": { "policy": "appVersion" },
+    "owner": "yucheung0408"
   }
 }
