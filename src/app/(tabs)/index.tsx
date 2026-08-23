@@ -13,6 +13,7 @@ import {
   isForecastStale,
   loadWeatherCache,
   saveWeatherCache,
+  weatherCacheKey,
   type DailyForecast,
   type WeatherCache,
 } from "@/lib/weather";
@@ -237,67 +238,95 @@ export default function TodayItineraryScreen() {
   const [gpsState, setGpsState] = useState<Record<number, GpsCardState>>({});
   const cacheRef = useRef<WeatherCache>({});
 
-  const updateCache = useCallback((day: number, forecast: DailyForecast) => {
-    cacheRef.current = { ...cacheRef.current, [day]: forecast };
+  const mountedRef = useRef(true);
+  useEffect(() => {
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
+
+  const updateCache = useCallback((day: number, date: string, forecast: DailyForecast) => {
+    const key = weatherCacheKey(day, date);
+    cacheRef.current = { ...cacheRef.current, [key]: forecast };
     setCache(cacheRef.current);
     saveWeatherCache(cacheRef.current);
   }, []);
 
   const fetchDay = useCallback(
-    async (location: WeatherLocation) => {
+    async (location: WeatherLocation, tripDate: string, signal?: AbortSignal) => {
       setLoadingDays((prev) => ({ ...prev, [location.day]: true }));
       try {
-        const forecast = await fetchWeather(location.day, location.latitude, location.longitude);
-        updateCache(location.day, forecast);
+        const forecast = await fetchWeather(location.day, location.latitude, location.longitude, tripDate, signal);
+        updateCache(location.day, tripDate, forecast);
       } catch (error) {
+        if (signal?.aborted) return;
         console.error(`天氣資料抓取失敗 (Day ${location.day})`, error);
       } finally {
-        setLoadingDays((prev) => ({ ...prev, [location.day]: false }));
+        if (!signal?.aborted) {
+          setLoadingDays((prev) => ({ ...prev, [location.day]: false }));
+        }
       }
     },
     [updateCache]
   );
 
   useEffect(() => {
+    const controller = new AbortController();
     (async () => {
       const initial = await loadWeatherCache();
+      if (controller.signal.aborted) return;
       cacheRef.current = initial;
       setCache(initial);
       setCacheReady(true);
-      weatherLocations
-        .filter((location) => isForecastStale(initial[location.day]))
-        .forEach((location) => fetchDay(location));
+      weatherLocations.forEach((location) => {
+        const trip = trips.find((t) => t.day === location.day);
+        if (!trip) return;
+        const key = weatherCacheKey(location.day, trip.date);
+        if (isForecastStale(initial[key])) {
+          fetchDay(location, trip.date, controller.signal);
+        }
+      });
     })();
+    return () => controller.abort();
   }, [fetchDay]);
 
-  const handleUseGps = useCallback(async (day: number) => {
+  const handleUseGps = useCallback(async (day: number, tripDate: string) => {
     setGpsState((prev) => ({ ...prev, [day]: { ...prev[day], loading: true, message: undefined } }));
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
     try {
       const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
-        setGpsState((prev) => ({
-          ...prev,
-          [day]: { loading: false, message: "無法取得目前位置,已顯示行程預設地點天氣" },
-        }));
+        if (mountedRef.current) {
+          setGpsState((prev) => ({
+            ...prev,
+            [day]: { loading: false, message: "無法取得目前位置,已顯示行程預設地點天氣" },
+          }));
+        }
         return;
       }
 
       const timeout = new Promise<never>((_, reject) => {
-        setTimeout(() => reject(new Error("GPS_TIMEOUT")), GPS_TIMEOUT_MS);
+        timeoutId = setTimeout(() => reject(new Error("GPS_TIMEOUT")), GPS_TIMEOUT_MS);
       });
       const position = await Promise.race([
         Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced }),
         timeout,
       ]);
-      const forecast = await fetchWeather(day, position.coords.latitude, position.coords.longitude);
-      setGpsState((prev) => ({ ...prev, [day]: { forecast, loading: false } }));
+      const forecast = await fetchWeather(day, position.coords.latitude, position.coords.longitude, tripDate);
+      if (mountedRef.current) {
+        setGpsState((prev) => ({ ...prev, [day]: { forecast, loading: false } }));
+      }
     } catch (error) {
       console.error(`GPS定位或天氣抓取失敗 (Day ${day})`, error);
-      const message =
-        error instanceof Error && error.message === "GPS_TIMEOUT"
-          ? "定位逾時,顯示預設地點天氣"
-          : "無法取得目前位置,已顯示行程預設地點天氣";
-      setGpsState((prev) => ({ ...prev, [day]: { loading: false, message } }));
+      if (mountedRef.current) {
+        const message =
+          error instanceof Error && error.message === "GPS_TIMEOUT"
+            ? "定位逾時,顯示預設地點天氣"
+            : "無法取得目前位置,已顯示行程預設地點天氣";
+        setGpsState((prev) => ({ ...prev, [day]: { loading: false, message } }));
+      }
+    } finally {
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
     }
   }, []);
 
@@ -313,12 +342,12 @@ export default function TodayItineraryScreen() {
           <TripCard
             trip={item}
             location={location}
-            forecast={cache[item.day]}
+            forecast={cache[weatherCacheKey(item.day, item.date)]}
             loading={loadingDays[item.day] ?? false}
             cacheReady={cacheReady}
             gps={gpsState[item.day]}
-            onRefresh={() => location && fetchDay(location)}
-            onUseGps={() => handleUseGps(item.day)}
+            onRefresh={() => location && fetchDay(location, item.date)}
+            onUseGps={() => handleUseGps(item.day, item.date)}
           />
         );
       }}
