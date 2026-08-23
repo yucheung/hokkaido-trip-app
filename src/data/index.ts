@@ -65,6 +65,13 @@ export interface EmergencyContact {
   note?: string;
 }
 
+export interface WeatherLocation {
+  day: number;
+  location: string;
+  latitude: number;
+  longitude: number;
+}
+
 export const trips: Trip[] = rawData.trips;
 export const spots: Spot[] = rawData.spots;
 export const shoppingGuide: ShoppingGuideItem[] = rawData.shoppingGuide as ShoppingGuideItem[];
@@ -72,3 +79,4 @@ export const officialCoupons: OfficialCoupon[] = rawData.officialCoupons;
 export const travelNotices: TravelNoticeItem[] = rawData.travelNotices as TravelNoticeItem[];
 export const flights: FlightInfo[] = rawData.flights;
 export const emergencyContacts: EmergencyContact[] = rawData.emergencyContacts;
+export const weatherLocations: WeatherLocation[] = rawData.weatherLocations;

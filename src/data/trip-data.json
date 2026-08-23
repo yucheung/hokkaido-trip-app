@@ -41,6 +41,14 @@
     { "name": "海外救援24小時專線", "phone": "001+010+886+2-2511-9266" }
   ],
 
+  "weatherLocations": [
+    { "day": 1, "location": "函館", "latitude": 41.7687, "longitude": 140.7288 },
+    { "day": 2, "location": "登別", "latitude": 42.4141, "longitude": 141.1994 },
+    { "day": 3, "location": "富良野", "latitude": 43.3417, "longitude": 142.3833 },
+    { "day": 4, "location": "小樽", "latitude": 43.1907, "longitude": 140.9947 },
+    { "day": 5, "location": "函館", "latitude": 41.7687, "longitude": 140.7288 }
+  ],
+
   "trips": [
     {
       "day": 1,
