@@ -72,6 +72,44 @@ export interface WeatherLocation {
   longitude: number;
 }
 
+export interface TravelerProfile {
+  id: string;
+  displayName: string;
+  bloodType: string;
+  allergies: string;
+  medicalNotes: string;
+  passportNumberLast4: string;
+  passportPhotoUri: string | null;
+  emergencyContactName: string;
+  emergencyContactPhone: string;
+}
+
+export interface DepartureChecklistItem {
+  item: string;
+}
+
+export type ChecklistState = Record<number, boolean>;
+
+export interface JapanesePhrase {
+  category: string;
+  japanese: string;
+  romaji: string;
+  chinese: string;
+}
+
+export interface EnglishPhrase {
+  category: string;
+  english: string;
+  chinese: string;
+}
+
+export interface ImportantAddress {
+  name: string;
+  japaneseAddress: string;
+  phone: string;
+  note?: string;
+}
+
 export const trips: Trip[] = rawData.trips;
 export const spots: Spot[] = rawData.spots;
 export const shoppingGuide: ShoppingGuideItem[] = rawData.shoppingGuide as ShoppingGuideItem[];
@@ -80,3 +118,8 @@ export const travelNotices: TravelNoticeItem[] = rawData.travelNotices as Travel
 export const flights: FlightInfo[] = rawData.flights;
 export const emergencyContacts: EmergencyContact[] = rawData.emergencyContacts;
 export const weatherLocations: WeatherLocation[] = rawData.weatherLocations;
+export const japanesePhrases: JapanesePhrase[] = rawData.japanesePhrases;
+export const englishPhrases: EnglishPhrase[] = rawData.englishPhrases;
+export const importantAddresses: ImportantAddress[] = rawData.importantAddresses;
+export const departureChecklist: DepartureChecklistItem[] = rawData.departureChecklist;
+export const hotelAddressNote: string = (rawData as any).hotelAddressNote ?? "";

@@ -5,6 +5,7 @@ import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-nati
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { SpotCard } from "@/components/SpotCard";
+import { DepartureChecklistSection } from "@/components/DepartureChecklistSection";
 import { spots, trips } from "@/data";
 import { MEAL_ICONS, MEAL_LABELS, mealStatusColor, type MealType } from "@/lib/meal";
 
@@ -79,6 +80,14 @@ export default function DayDetailScreen() {
         </Text>
         <Text style={styles.title}>{trip.title}</Text>
       </View>
+
+      {/* 回程前確認清單：僅在 Day 5 顯示 */}
+      {trip.day === 5 && (
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>✈️ 回程前確認清單</Text>
+          <DepartureChecklistSection />
+        </View>
+      )}
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>完整行程</Text>

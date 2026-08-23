@@ -9,6 +9,10 @@ import {
   type TravelNoticeItem,
 } from "@/data";
 import { WARNING_COLOR } from "@/lib/meal";
+import { TravelerProfileSection } from "@/components/TravelerProfileSection";
+import { JapanesePhraseCard } from "@/components/JapanesePhraseCard";
+import { EnglishPhraseCard } from "@/components/EnglishPhraseCard";
+import { ImportantAddressCard } from "@/components/ImportantAddressCard";
 
 const CATEGORY_ORDER: TravelNoticeItem["category"][] = [
   "行李規定",
@@ -110,6 +114,43 @@ export default function TravelNoticesScreen() {
         </View>
       </View>
 
+      {/* 👤 旅伴資訊 */}
+      <CollapsibleSection
+        title="👤 旅伴資訊"
+        expanded={!!expandedCategories["旅伴資訊"]}
+        onToggle={() => toggleCategory("旅伴資訊")}
+      >
+        <TravelerProfileSection />
+      </CollapsibleSection>
+
+      {/* 🗣️ 日文急用短語 */}
+      <CollapsibleSection
+        title="🗣️ 日文急用短語"
+        expanded={!!expandedCategories["日文急用短語"]}
+        onToggle={() => toggleCategory("日文急用短語")}
+      >
+        <JapanesePhraseCard />
+      </CollapsibleSection>
+
+      {/* 🌐 英文急用短語 */}
+      <CollapsibleSection
+        title="🌐 英文急用短語"
+        expanded={!!expandedCategories["英文急用短語"]}
+        onToggle={() => toggleCategory("英文急用短語")}
+      >
+        <EnglishPhraseCard />
+      </CollapsibleSection>
+
+      {/* 📍 重要地址 */}
+      <CollapsibleSection
+        title="📍 重要地址"
+        expanded={!!expandedCategories["重要地址"]}
+        onToggle={() => toggleCategory("重要地址")}
+      >
+        <ImportantAddressCard />
+      </CollapsibleSection>
+
+      {/* 行程注意事項 */}
       {CATEGORY_ORDER.map((category) => {
         const items = travelNotices.filter((notice) => notice.category === category);
         const expanded = !!expandedCategories[category];

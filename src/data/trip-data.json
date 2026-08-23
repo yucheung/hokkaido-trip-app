@@ -6,7 +6,6 @@
     "badgeColor": "藍色",
     "luggageTagColor": "藍色"
   },
-
   "flights": [
     {
       "date": "2026-08-25",
@@ -29,26 +28,73 @@
       "gateInfo": "函館空港"
     }
   ],
-
   "emergencyContacts": [
-    { "name": "旅行社緊急聯絡電話(上班時間)", "phone": "(02)2567-1076" },
-    { "name": "旅行社緊急聯絡電話(晚上時間)", "phone": "0933-906-538" },
-    { "name": "機場專線(第一航站)", "phone": "0928-251-747" },
-    { "name": "機場專線(第二航站)", "phone": "0988-152-034" },
-    { "name": "外站聯絡人:王雅婷(大興旅行社訂房部-北海道)", "phone": "0927-735-733" },
-    { "name": "外交部旅外國人急難救助全球免付費專線", "phone": "800-0885-0885", "note": "亦可用 001-010-800-0885-0885(KDDI) / 0033-010-800-0885-0885(NTT) / 0061-010-800-0885-0885(SoftBank)" },
-    { "name": "駐日本代表處(台北駐日經濟文化代表處)緊急聯絡電話", "phone": "080-6552-4764" },
-    { "name": "海外救援24小時專線", "phone": "001+010+886+2-2511-9266" }
+    {
+      "name": "旅行社緊急聯絡電話(上班時間)",
+      "phone": "(02)2567-1076"
+    },
+    {
+      "name": "旅行社緊急聯絡電話(晚上時間)",
+      "phone": "0933-906-538"
+    },
+    {
+      "name": "機場專線(第一航站)",
+      "phone": "0928-251-747"
+    },
+    {
+      "name": "機場專線(第二航站)",
+      "phone": "0988-152-034"
+    },
+    {
+      "name": "外站聯絡人:王雅婷(大興旅行社訂房部-北海道)",
+      "phone": "0927-735-733"
+    },
+    {
+      "name": "外交部旅外國人急難救助全球免付費專線",
+      "phone": "800-0885-0885",
+      "note": "亦可用 001-010-800-0885-0885(KDDI) / 0033-010-800-0885-0885(NTT) / 0061-010-800-0885-0885(SoftBank)"
+    },
+    {
+      "name": "駐日本代表處(台北駐日經濟文化代表處)緊急聯絡電話",
+      "phone": "080-6552-4764"
+    },
+    {
+      "name": "海外救援24小時專線",
+      "phone": "001+010+886+2-2511-9266"
+    }
   ],
-
   "weatherLocations": [
-    { "day": 1, "location": "函館", "latitude": 41.7687, "longitude": 140.7288 },
-    { "day": 2, "location": "登別", "latitude": 42.4141, "longitude": 141.1994 },
-    { "day": 3, "location": "富良野", "latitude": 43.3417, "longitude": 142.3833 },
-    { "day": 4, "location": "小樽", "latitude": 43.1907, "longitude": 140.9947 },
-    { "day": 5, "location": "函館", "latitude": 41.7687, "longitude": 140.7288 }
+    {
+      "day": 1,
+      "location": "函館",
+      "latitude": 41.7687,
+      "longitude": 140.7288
+    },
+    {
+      "day": 2,
+      "location": "登別",
+      "latitude": 42.4141,
+      "longitude": 141.1994
+    },
+    {
+      "day": 3,
+      "location": "富良野",
+      "latitude": 43.3417,
+      "longitude": 142.3833
+    },
+    {
+      "day": 4,
+      "location": "小樽",
+      "latitude": 43.1907,
+      "longitude": 140.9947
+    },
+    {
+      "day": 5,
+      "location": "函館",
+      "latitude": 41.7687,
+      "longitude": 140.7288
+    }
   ],
-
   "trips": [
     {
       "day": 1,
@@ -57,13 +103,30 @@
       "title": "函館山千萬夜景",
       "fullItinerary": "台北 → 函館空港 → 函館山(世界三大夜景之一)～贈送搭乘纜車欣賞函館千萬夜景 或 搭乘計程車直上山頂",
       "meals": {
-        "breakfast": { "label": "無(去程日)", "included": false },
-        "lunch": { "label": "機上享用或自理", "included": false },
-        "dinner": { "label": "和洋百匯自助餐+長腳蟹、帆立貝吃到飽 或 日式御膳料理", "included": true }
+        "breakfast": {
+          "label": "無(去程日)",
+          "included": false
+        },
+        "lunch": {
+          "label": "機上享用或自理",
+          "included": false
+        },
+        "dinner": {
+          "label": "和洋百匯自助餐+長腳蟹、帆立貝吃到飽 或 日式御膳料理",
+          "included": true
+        }
       },
-      "hotelOptions": ["函館平成館", "海與燈", "啄木亭", "IMAGINE HOTEL", "同等級"],
+      "hotelOptions": [
+        "函館平成館",
+        "海與燈",
+        "啄木亭",
+        "IMAGINE HOTEL",
+        "同等級"
+      ],
       "hotelPhone": "0138-59-2335",
-      "relatedSpotIds": ["hakodateyama"]
+      "relatedSpotIds": [
+        "hakodateyama"
+      ]
     },
     {
       "day": 2,
@@ -72,13 +135,35 @@
       "title": "五稜郭城跡．登別尼克斯海洋公園．登別地獄谷",
       "fullItinerary": "五稜廓城跡～歐洲五星城堡式的西洋軍用基地★獨家贈送★登上展望台俯瞰五稜廓星形公園 → 函館朝市 → 登別尼克斯海洋公園～充滿北歐浪漫氣氛和海洋幻想的主題樂園～國王企鵝大遊行 → 登別地獄谷 → 登別溫泉鄉(日本最代表性的浪漫溫泉街道,泉質最佳,硫化水素泉)、登別極樂通傳統街",
       "meals": {
-        "breakfast": { "label": "飯店內早餐", "included": true },
-        "lunch": { "label": "園區內日式壽喜燒(肉品蔬菜吃到飽)+螃蟹陶板燒", "included": true },
-        "dinner": { "label": "飯店內迎賓海鮮自助餐", "included": true }
+        "breakfast": {
+          "label": "飯店內早餐",
+          "included": true
+        },
+        "lunch": {
+          "label": "園區內日式壽喜燒(肉品蔬菜吃到飽)+螃蟹陶板燒",
+          "included": true
+        },
+        "dinner": {
+          "label": "飯店內迎賓海鮮自助餐",
+          "included": true
+        }
       },
-      "hotelOptions": ["登別馬可波羅", "GRAND", "第一瀧本館", "石水亭", "洞爺湖溫泉", "定山溪溫泉", "同等級"],
+      "hotelOptions": [
+        "登別馬可波羅",
+        "GRAND",
+        "第一瀧本館",
+        "石水亭",
+        "洞爺湖溫泉",
+        "定山溪溫泉",
+        "同等級"
+      ],
       "hotelPhone": "0143-84-2211",
-      "relatedSpotIds": ["goryokaku", "hakodate-asaichi", "nixe-park", "jigokudani"],
+      "relatedSpotIds": [
+        "goryokaku",
+        "hakodate-asaichi",
+        "nixe-park",
+        "jigokudani"
+      ],
       "note": "PS.如遇尼克斯海洋公園休館,則改前往登別伊達時代村"
     },
     {
@@ -88,13 +173,32 @@
       "title": "富良野富田花園農場．四季彩之丘",
       "fullItinerary": "路經美瑛之丘、普羅旺斯丘(羅列色彩繽紛的花田,宛如一幅拼布作品) → 四季彩之丘～★贈送A.搭乘造型遊園車 → 富良野．富田花園農場～★贈送B.品嚐薰衣草霜淇淋、另外★贈送C.薰衣草香枕+品嚐哈密瓜吃到飽 → 自由前往札幌狸小路商店街購物",
       "meals": {
-        "breakfast": { "label": "飯店內早餐", "included": true },
-        "lunch": { "label": "富良野和洋自助百匯+飲料無限暢飲(贈送哈密瓜吃到飽)", "included": true },
-        "dinner": { "label": "日式烤肉餐 或 涮涮鍋+啤酒飲料無限暢飲,特別贈送長腳蟹、帝王蟹吃到飽 或 螃蟹將軍懷石料理", "included": true }
+        "breakfast": {
+          "label": "飯店內早餐",
+          "included": true
+        },
+        "lunch": {
+          "label": "富良野和洋自助百匯+飲料無限暢飲(贈送哈密瓜吃到飽)",
+          "included": true
+        },
+        "dinner": {
+          "label": "日式烤肉餐 或 涮涮鍋+啤酒飲料無限暢飲,特別贈送長腳蟹、帝王蟹吃到飽 或 螃蟹將軍懷石料理",
+          "included": true
+        }
       },
-      "hotelOptions": ["札幌IBIS STYLES", "東急EXCEL HOTEL", "T-MARK札幌大通", "PREMIER中島公園", "同等級"],
+      "hotelOptions": [
+        "札幌IBIS STYLES",
+        "東急EXCEL HOTEL",
+        "T-MARK札幌大通",
+        "PREMIER中島公園",
+        "同等級"
+      ],
       "hotelPhone": "011-530-4055",
-      "relatedSpotIds": ["farm-tomita", "shikisai-no-oka", "tanukikoji"],
+      "relatedSpotIds": [
+        "farm-tomita",
+        "shikisai-no-oka",
+        "tanukikoji"
+      ],
       "note": "PS.因全球氣候異變,難保證花草植物的自然生長,故依約前往原景點純欣賞。8月底薰衣草通常已過盛開高峰期(高峰約7月中下旬),請斟酌預期"
     },
     {
@@ -104,13 +208,32 @@
       "title": "小樽運河浪漫遊．洞爺湖花火大會",
       "fullItinerary": "札幌大通公園、路經時計台、路經舊道廳 → 免稅店 → 小樽浪漫遊【路經小樽運河(紅色磚瓦倉庫群)、北一硝子館、音樂鐘博物館】 → 昭和新山 → 洞爺熊牧場～生態觀察★特別贈送~每人一袋熊食用餅乾 → 洞爺湖溫泉★贈送★欣賞洞爺湖花火大會 或 其他溫泉飯店★贈送★¥500購物券",
       "meals": {
-        "breakfast": { "label": "飯店內早餐", "included": true },
-        "lunch": { "label": "日式香烤花魚定食+炸天婦羅 或 燒烤餐", "included": true },
-        "dinner": { "label": "北海道風味自助海鮮晚餐 或 飯店內會席料理", "included": true }
+        "breakfast": {
+          "label": "飯店內早餐",
+          "included": true
+        },
+        "lunch": {
+          "label": "日式香烤花魚定食+炸天婦羅 或 燒烤餐",
+          "included": true
+        },
+        "dinner": {
+          "label": "北海道風味自助海鮮晚餐 或 飯店內會席料理",
+          "included": true
+        }
       },
-      "hotelOptions": ["洞爺湖溫泉SUN PALACE", "北湯澤溫泉森之空庭", "洞爺湖溫泉萬世閣", "登別溫泉", "同等級"],
+      "hotelOptions": [
+        "洞爺湖溫泉SUN PALACE",
+        "北湯澤溫泉森之空庭",
+        "洞爺湖溫泉萬世閣",
+        "登別溫泉",
+        "同等級"
+      ],
       "hotelPhone": "0142-75-1111",
-      "relatedSpotIds": ["otaru-canal", "showa-shinzan", "toyako-fireworks"]
+      "relatedSpotIds": [
+        "otaru-canal",
+        "showa-shinzan",
+        "toyako-fireworks"
+      ]
     },
     {
       "day": 5,
@@ -119,22 +242,38 @@
       "title": "北極星觀景列車．金森倉庫群",
       "fullItinerary": "日本新三景～大、小沼國立公園 → 北國列車之旅─大沼公園站～函館站*北極星(北斗號)*觀景列車 或 大沼遊船 二擇一 → 金森倉庫群 → 百年女子修道院 → 函館空港 → 台北",
       "meals": {
-        "breakfast": { "label": "飯店內早餐", "included": true },
-        "lunch": { "label": "石狩海鮮火鍋+炸蝦天婦羅", "included": true },
-        "dinner": { "label": "機上享用或自理", "included": false }
+        "breakfast": {
+          "label": "飯店內早餐",
+          "included": true
+        },
+        "lunch": {
+          "label": "石狩海鮮火鍋+炸蝦天婦羅",
+          "included": true
+        },
+        "dinner": {
+          "label": "機上享用或自理",
+          "included": false
+        }
       },
-      "hotelOptions": ["溫暖的家(返程,無住宿)"],
+      "hotelOptions": [
+        "溫暖的家(返程,無住宿)"
+      ],
       "hotelPhone": "",
-      "relatedSpotIds": ["onuma-park", "kanemori", "trappistine-convent"],
+      "relatedSpotIds": [
+        "onuma-park",
+        "kanemori",
+        "trappistine-convent"
+      ],
       "note": "PS.如遇北極星列車預約客滿時,則改搭乘大沼遊船"
     }
   ],
-
   "spots": [
     {
       "id": "hakodateyama",
       "name": "函館山夜景",
-      "day": [1],
+      "day": [
+        1
+      ],
       "tagline": "世界三大夜景之一,扇形海灣地形獨一無二,米其林三星景點",
       "mustEat": [
         "山頂纜車站2F熟食區:魷魚可樂餅、奶油馬鈴薯、炸土豆糕",
@@ -153,7 +292,9 @@
     {
       "id": "goryokaku",
       "name": "五稜郭塔．五稜郭城跡",
-      "day": [2],
+      "day": [
+        2
+      ],
       "tagline": "日本唯一西式五角星堡壘,塔身與觀景台皆為五角形設計",
       "mustEat": [
         "塔內1F禮品區、2F餐廳可稍作休息"
@@ -170,7 +311,9 @@
     {
       "id": "hakodate-asaichi",
       "name": "函館朝市",
-      "day": [2],
+      "day": [
+        2
+      ],
       "tagline": "約250家攤位,北海道帝王蟹與海鮮丼的代表市場",
       "mustEat": [
         "きくよ食堂三色丼(鮭魚卵/海膽/蟹肉)",
@@ -190,7 +333,9 @@
     {
       "id": "nixe-park",
       "name": "登別尼克斯海洋公園",
-      "day": [2],
+      "day": [
+        2
+      ],
       "tagline": "北歐羅馬風格城堡造型水族館,展示約350種1.1萬隻海洋生物",
       "mustEat": [],
       "mustSee": [
@@ -204,7 +349,9 @@
     {
       "id": "jigokudani",
       "name": "登別地獄谷",
-      "day": [2],
+      "day": [
+        2
+      ],
       "tagline": "火山口遺跡地形,硫磺蒸氣繚繞如異世界景觀",
       "mustEat": [],
       "mustSee": [
@@ -219,7 +366,9 @@
     {
       "id": "farm-tomita",
       "name": "富良野富田花園農場",
-      "day": [3],
+      "day": [
+        3
+      ],
       "tagline": "富良野薰衣草代名詞,園內約110種花卉組成帶狀花海",
       "mustEat": [
         "薰衣草霜淇淋(招牌,淡淡花香)",
@@ -238,7 +387,9 @@
     {
       "id": "shikisai-no-oka",
       "name": "四季彩之丘",
-      "day": [3],
+      "day": [
+        3
+      ],
       "tagline": "視野遼闊的丘之町美瑛代表花田,面積達15公頃",
       "mustEat": [],
       "mustSee": [
@@ -250,7 +401,9 @@
     {
       "id": "tanukikoji",
       "name": "札幌狸小路商店街",
-      "day": [3],
+      "day": [
+        3
+      ],
       "tagline": "全日本最大商店街之一,美食購物一次滿足,自由活動通常時間有限",
       "mustEat": [
         "GARAKU湯咖哩(建議辣度3以上)",
@@ -264,7 +417,9 @@
     {
       "id": "otaru-canal",
       "name": "小樽運河．堺町通商店街",
-      "day": [4],
+      "day": [
+        4
+      ],
       "tagline": "紅磚倉庫倒映運河,浪漫散策路線,甜點名店密集",
       "mustEat": [
         "LeTAO雙層起司蛋糕",
@@ -282,7 +437,9 @@
     {
       "id": "showa-shinzan",
       "name": "昭和新山．洞爺熊牧場",
-      "day": [4],
+      "day": [
+        4
+      ],
       "tagline": "火山地殼隆起形成的珍貴融岩塔,鄰近熊牧場可近距離觀察棕熊",
       "mustEat": [],
       "mustSee": [
@@ -296,7 +453,9 @@
     {
       "id": "toyako-fireworks",
       "name": "洞爺湖溫泉．花火大會",
-      "day": [4],
+      "day": [
+        4
+      ],
       "tagline": "每晚20:45-21:05固定施放約20分鐘煙火,湖面與煙火形成雙重奏",
       "mustEat": [],
       "mustSee": [
@@ -310,7 +469,9 @@
     {
       "id": "onuma-park",
       "name": "大沼公園．北極星觀景列車",
-      "day": [5],
+      "day": [
+        5
+      ],
       "tagline": "由126個小島與湖灣組成的日本新三景,搭乘觀景列車欣賞道南景色",
       "mustEat": [
         "沼の家「大沼糰子」(百年老店,當日限定賞味,紅豆餡與黑芝麻餡兩種口味)"
@@ -326,7 +487,9 @@
     {
       "id": "kanemori",
       "name": "金森倉庫群",
-      "day": [5],
+      "day": [
+        5
+      ],
       "tagline": "港口倉庫改建文創園區,函館必逛的購物美食地標",
       "mustEat": [
         "幸運小丑漢堡(函館限定必吃)",
@@ -341,7 +504,9 @@
     {
       "id": "trappistine-convent",
       "name": "百年女子修道院",
-      "day": [5],
+      "day": [
+        5
+      ],
       "tagline": "日本第一家、也是最古老的女子修道院,1898年由法國修女創建",
       "mustEat": [],
       "mustSee": [
@@ -352,74 +517,105 @@
       ]
     }
   ],
-
   "shoppingGuide": [
     {
       "location": "函館",
       "category": "藥妝",
       "storeName": "札幌藥妝 函館朝市店 / 函館金森倉庫店",
-      "items": ["護唇膏", "保濕面紙", "關節保健錠劑", "防潑水噴霧(鞋用)"],
+      "items": [
+        "護唇膏",
+        "保濕面紙",
+        "關節保健錠劑",
+        "防潑水噴霧(鞋用)"
+      ],
       "note": "函館朝市店有會講中文的職員協助搜貨與退稅"
     },
     {
       "location": "登別",
       "category": "伴手禮",
       "storeName": "登別極樂通傳統商店街",
-      "items": ["溫泉限定入浴劑", "傳統手工藝品"],
+      "items": [
+        "溫泉限定入浴劑",
+        "傳統手工藝品"
+      ],
       "note": "登別為溫泉小鎮,藥妝/3C選擇較少,以溫泉周邊商品為主"
     },
     {
       "location": "富良野美瑛",
       "category": "伴手禮",
       "storeName": "富田花園農場賣店",
-      "items": ["薰衣草相關商品(香水/護膚品/乾燥花)", "哈密瓜製品"],
+      "items": [
+        "薰衣草相關商品(香水/護膚品/乾燥花)",
+        "哈密瓜製品"
+      ],
       "note": "此區以農產伴手禮為主,非藥妝3C重鎮"
     },
     {
       "location": "札幌",
       "category": "3C",
       "storeName": "Bic Camera 札幌店(東急百貨5-6F)或狸小路5丁目店",
-      "items": ["吹風機", "水波爐", "吸塵器", "相機", "行動電源(注意攜帶上機限制)"],
+      "items": [
+        "吹風機",
+        "水波爐",
+        "吸塵器",
+        "相機",
+        "行動電源(注意攜帶上機限制)"
+      ],
       "note": "狸小路5丁目店營業至23:00,是逛最晚的3C門市"
     },
     {
       "location": "札幌",
       "category": "藥妝",
       "storeName": "札幌藥妝 狸小路大王大樓店",
-      "items": ["北海道限定藥妝", "保養品"],
+      "items": [
+        "北海道限定藥妝",
+        "保養品"
+      ],
       "note": "近地鐵薄野站,可透過地下街POLE TOWN直接前往"
     },
     {
       "location": "小樽",
       "category": "藥妝",
       "storeName": "札幌藥妝 小樽堺町店",
-      "items": ["北海道限定藥妝與伴手禮"],
+      "items": [
+        "北海道限定藥妝與伴手禮"
+      ],
       "note": "近小樽運河,適合行程最後採購"
     },
     {
       "location": "小樽",
       "category": "伴手禮",
       "storeName": "堺町通商店街(LeTAO/北菓樓/六花亭)",
-      "items": ["雙層起司蛋糕", "夢不思議泡芙", "草莓巧克力"],
+      "items": [
+        "雙層起司蛋糕",
+        "夢不思議泡芙",
+        "草莓巧克力"
+      ],
       "note": "詳細美食資訊見景點百科「小樽運河」條目"
     }
   ],
-
   "officialCoupons": [
     {
       "storeName": "Bic Camera",
       "discount": "免稅10% + 出示優惠券再折7%",
-      "applicableLocations": ["札幌(東急百貨5-6F店)", "札幌(狸小路5丁目店)"],
+      "applicableLocations": [
+        "札幌(東急百貨5-6F店)",
+        "札幌(狸小路5丁目店)"
+      ],
       "sourceNote": "店家官方公開發放之常態折扣,非個人推薦連結,結帳時直接出示手機畫面即可"
     },
     {
       "storeName": "札幌藥妝(Satsudora)",
       "discount": "免稅8% + 出示優惠券再折2%",
-      "applicableLocations": ["函館朝市店", "函館金森倉庫店", "小樽堺町店", "狸小路大王大樓店"],
+      "applicableLocations": [
+        "函館朝市店",
+        "函館金森倉庫店",
+        "小樽堺町店",
+        "狸小路大王大樓店"
+      ],
       "sourceNote": "店家官方公開發放之常態折扣,非個人推薦連結,結帳時直接出示手機畫面即可"
     }
   ],
-
   "travelNotices": [
     {
       "category": "行李規定",
@@ -622,5 +818,188 @@
       ],
       "severity": "info"
     }
-  ]
+  ],
+  "japanesePhrases": [
+    {
+      "category": "緊急求助",
+      "japanese": "助けてください",
+      "romaji": "Tasukete kudasai",
+      "chinese": "請幫助我"
+    },
+    {
+      "category": "緊急求助",
+      "japanese": "救急車を呼んでください",
+      "romaji": "Kyuukyuusha wo yonde kudasai",
+      "chinese": "請叫救護車"
+    },
+    {
+      "category": "緊急求助",
+      "japanese": "警察を呼んでください",
+      "romaji": "Keisatsu wo yonde kudasai",
+      "chinese": "請叫警察"
+    },
+    {
+      "category": "緊急求助",
+      "japanese": "道に迷いました",
+      "romaji": "Michi ni mayoimashita",
+      "chinese": "我迷路了"
+    },
+    {
+      "category": "緊急求助",
+      "japanese": "パスポートをなくしました",
+      "romaji": "Pasupooto wo nakushimashita",
+      "chinese": "我的護照遺失了"
+    },
+    {
+      "category": "緊急求助",
+      "japanese": "アレルギーがあります",
+      "romaji": "Arerugii ga arimasu",
+      "chinese": "我有過敏"
+    },
+    {
+      "category": "緊急求助",
+      "japanese": "お腹が痛いです",
+      "romaji": "Onaka ga itai desu",
+      "chinese": "我肚子痛"
+    },
+    {
+      "category": "緊急求助",
+      "japanese": "中国語（英語）を話せる人はいますか",
+      "romaji": "Chuugokugo (eigo) wo hanaseru hito wa imasu ka",
+      "chinese": "有人會說中文(英文)嗎"
+    },
+    {
+      "category": "日常詢問",
+      "japanese": "この近くに薬局はありますか",
+      "romaji": "Kono chikaku ni yakkyoku wa arimasu ka",
+      "chinese": "這附近有藥局嗎"
+    },
+    {
+      "category": "日常詢問",
+      "japanese": "トイレはどこですか",
+      "romaji": "Toire wa doko desu ka",
+      "chinese": "廁所在哪裡"
+    },
+    {
+      "category": "購物",
+      "japanese": "これはいくらですか",
+      "romaji": "Kore wa ikura desu ka",
+      "chinese": "這個多少錢"
+    },
+    {
+      "category": "購物",
+      "japanese": "免税できますか",
+      "romaji": "Menzei dekimasu ka",
+      "chinese": "可以退稅嗎"
+    }
+  ],
+  "englishPhrases": [
+    {
+      "category": "入境審查",
+      "english": "I'm here for sightseeing.",
+      "chinese": "我是來觀光的"
+    },
+    {
+      "category": "入境審查",
+      "english": "I'll be staying for five days.",
+      "chinese": "我會停留五天"
+    },
+    {
+      "category": "入境審查",
+      "english": "I'm traveling with my family.",
+      "chinese": "我跟家人一起旅遊"
+    },
+    {
+      "category": "海關申報",
+      "english": "I have nothing to declare.",
+      "chinese": "我沒有需要申報的物品"
+    },
+    {
+      "category": "海關申報",
+      "english": "This is for personal use.",
+      "chinese": "這是自用的"
+    },
+    {
+      "category": "購物退稅",
+      "english": "Could I get a tax refund on this?",
+      "chinese": "這個可以退稅嗎"
+    },
+    {
+      "category": "購物退稅",
+      "english": "Can I pay by credit card?",
+      "chinese": "可以刷卡嗎"
+    },
+    {
+      "category": "購物退稅",
+      "english": "Do you have this in a different size?",
+      "chinese": "有其他尺寸嗎"
+    },
+    {
+      "category": "購物退稅",
+      "english": "I'd like to buy this one, please.",
+      "chinese": "我要買這個"
+    },
+    {
+      "category": "一般求助",
+      "english": "Could you write it down, please?",
+      "chinese": "可以幫我寫下來嗎"
+    },
+    {
+      "category": "一般求助",
+      "english": "Where is the nearest restroom?",
+      "chinese": "最近的廁所在哪裡"
+    },
+    {
+      "category": "一般求助",
+      "english": "Where is the nearest ATM?",
+      "chinese": "最近的提款機在哪裡"
+    }
+  ],
+  "importantAddresses": [
+    {
+      "name": "函館空港",
+      "japaneseAddress": "〒042-0952 北海道函館市高松町511番地",
+      "phone": "0138-57-8881",
+      "note": "去程與回程皆在此進出,可直接出示給計程車司機看"
+    },
+    {
+      "name": "台北駐日經濟文化代表處 札幌分處(北海道轄區)",
+      "japaneseAddress": "〒060-0004 北海道札幌市中央區北4條西4丁目1番地 伊藤大樓5樓",
+      "phone": "011-222-2930",
+      "note": "辦公時間為平日09:00-12:00、13:00-17:00,緊急狀況請撥emergencyContacts中的24小時專線"
+    }
+  ],
+  "departureChecklist": [
+    {
+      "item": "護照(4人)是否都在隨身包包裡,不是託運行李裡"
+    },
+    {
+      "item": "所有免稅品封裝袋是否都還沒拆開"
+    },
+    {
+      "item": "退稅收據是否都黏附在對應的透明袋內"
+    },
+    {
+      "item": "行動電源是否放在隨身包包(不是託運行李),且不超過2個"
+    },
+    {
+      "item": "液體/膠狀物品是否都在100ml以下並裝入透明夾鏈袋"
+    },
+    {
+      "item": "刀類、剪刀等尖銳物品是否已放入託運行李,沒有留在隨身包包"
+    },
+    {
+      "item": "手機、行動電源是否都已充電,航班上禁止充電"
+    },
+    {
+      "item": "登機證與護照是否都準備好,確認登機門與登機時間"
+    },
+    {
+      "item": "行李箱是否有清點4人份,沒有落下任何一件"
+    },
+    {
+      "item": "確認飯店房卡/鑰匙是否已歸還(如適用)"
+    }
+  ],
+  "hotelAddressNote": "跟團行程的飯店為候選名單,實際入住地點以當天導遊安排為準,無法預先提供確切地址。建議辦理入住後,在飯店櫃檯拿一張印有飯店名稱與地址的名片或火柴盒(多數日本飯店櫃檯備有),萬一外出時與團體走散或需要搭計程車返回,直接出示給司機看最快最準確。"
 }
