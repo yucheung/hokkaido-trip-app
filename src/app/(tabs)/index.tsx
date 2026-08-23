@@ -106,14 +106,14 @@ function WeatherBlock({
               <Text style={styles.weatherRain}>降雨 {effectiveForecast.precipitationProbability}%</Text>
             </View>
             <View style={styles.weatherActions}>
-              <Pressable style={styles.weatherActionButton} onPress={onUseGps} disabled={gpsLoading} hitSlop={8}>
+              <Pressable style={styles.weatherActionButton} onPress={onUseGps} disabled={gpsLoading} hitSlop={12}>
                 {gpsLoading ? (
                   <ActivityIndicator size="small" color="#94A3B8" />
                 ) : (
                   <Ionicons name="locate-outline" size={16} color="#94A3B8" />
                 )}
               </Pressable>
-              <Pressable style={styles.weatherActionButton} onPress={onRefresh} disabled={loading} hitSlop={8}>
+              <Pressable style={styles.weatherActionButton} onPress={onRefresh} disabled={loading} hitSlop={12}>
                 {loading ? (
                   <ActivityIndicator size="small" color="#94A3B8" />
                 ) : (
@@ -157,7 +157,7 @@ function WeatherBlock({
       ) : (
         <View style={styles.weatherEmptyRow}>
           <Text style={styles.weatherEmptyText}>尚無天氣資料,請連網後重新整理</Text>
-          <Pressable onPress={onRefresh} disabled={loading} hitSlop={8}>
+          <Pressable onPress={onRefresh} disabled={loading} hitSlop={12}>
             {loading ? (
               <ActivityIndicator size="small" color="#94A3B8" />
             ) : (
@@ -443,7 +443,7 @@ const styles = StyleSheet.create({
     marginLeft: -1,
   },
   mealBadgeText: {
-    fontSize: 11,
+    fontSize: 13,
     fontWeight: "600",
   },
   weatherSection: {

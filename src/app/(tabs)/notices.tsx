@@ -1,6 +1,6 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useState } from "react";
-import { ScrollView, StyleSheet, Text, View, Pressable } from "react-native";
+import { useRef, useState } from "react";
+import { FlatList, ScrollView, StyleSheet, Text, View, Pressable } from "react-native";
 
 import {
   emergencyContacts,
@@ -68,16 +68,42 @@ function CollapsibleSection({
 }
 
 export default function TravelNoticesScreen() {
+  const scrollViewRef = useRef<ScrollView>(null);
+  const [sectionOffsets, setSectionOffsets] = useState<Record<string, number>>({});
   const [expandedCategories, setExpandedCategories] = useState<
     Record<string, boolean>
   >({});
+
+  const SECTION_CHIPS = [
+    { label: "行李規定", key: "行李規定" },
+    { label: "海關規定", key: "海關規定" },
+    { label: "退稅流程", key: "退稅流程" },
+    { label: "登機須知", key: "登機須知" },
+    { label: "打包眉角", key: "打包眉角" },
+    { label: "旅伴資訊", key: "旅伴資訊" },
+    { label: "日文短語", key: "日文急用短語" },
+    { label: "英文短語", key: "英文急用短語" },
+    { label: "重要地址", key: "重要地址" },
+  ];
+
+  const scrollToSection = (key: string) => {
+    setExpandedCategories((prev) => ({ ...prev, [key]: true }));
+    const offset = sectionOffsets[key];
+    if (offset !== undefined && scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({ y: offset, animated: true });
+    }
+  };
+
+  const handleSectionLayout = (key: string) => (e: { nativeEvent: { layout: { y: number } } }) => {
+    setSectionOffsets((prev) => ({ ...prev, [key]: e.nativeEvent.layout.y }));
+  };
 
   const toggleCategory = (category: string) => {
     setExpandedCategories((prev) => ({ ...prev, [category]: !prev[category] }));
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <ScrollView ref={scrollViewRef} style={styles.container} contentContainerStyle={styles.content}>
       {/* 航班資訊：固定置頂，不折疊 */}
       <View style={styles.section}>
         <Text style={styles.pinnedSectionTitle}>✈️ 航班資訊</Text>
@@ -114,48 +140,75 @@ export default function TravelNoticesScreen() {
         </View>
       </View>
 
+      {/* Section jump chip bar */}
+      <View style={styles.chipBarContainer}>
+        <FlatList
+          data={SECTION_CHIPS}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.key}
+          renderItem={({ item }) => (
+            <Pressable
+              style={styles.chip}
+              onPress={() => scrollToSection(item.key)}
+            >
+              <Text style={styles.chipText}>{item.label}</Text>
+            </Pressable>
+          )}
+        />
+      </View>
+
       {/* 👤 旅伴資訊 */}
-      <CollapsibleSection
-        title="👤 旅伴資訊"
-        expanded={!!expandedCategories["旅伴資訊"]}
-        onToggle={() => toggleCategory("旅伴資訊")}
-      >
-        <TravelerProfileSection />
-      </CollapsibleSection>
+      <View onLayout={handleSectionLayout("旅伴資訊")}>
+        <CollapsibleSection
+          title="👤 旅伴資訊"
+          expanded={!!expandedCategories["旅伴資訊"]}
+          onToggle={() => toggleCategory("旅伴資訊")}
+        >
+          <TravelerProfileSection />
+        </CollapsibleSection>
+      </View>
 
       {/* 🗣️ 日文急用短語 */}
-      <CollapsibleSection
-        title="🗣️ 日文急用短語"
-        expanded={!!expandedCategories["日文急用短語"]}
-        onToggle={() => toggleCategory("日文急用短語")}
-      >
-        <JapanesePhraseCard />
-      </CollapsibleSection>
+      <View onLayout={handleSectionLayout("日文急用短語")}>
+        <CollapsibleSection
+          title="🗣️ 日文急用短語"
+          expanded={!!expandedCategories["日文急用短語"]}
+          onToggle={() => toggleCategory("日文急用短語")}
+        >
+          <JapanesePhraseCard />
+        </CollapsibleSection>
+      </View>
 
       {/* 🌐 英文急用短語 */}
-      <CollapsibleSection
-        title="🌐 英文急用短語"
-        expanded={!!expandedCategories["英文急用短語"]}
-        onToggle={() => toggleCategory("英文急用短語")}
-      >
-        <EnglishPhraseCard />
-      </CollapsibleSection>
+      <View onLayout={handleSectionLayout("英文急用短語")}>
+        <CollapsibleSection
+          title="🌐 英文急用短語"
+          expanded={!!expandedCategories["英文急用短語"]}
+          onToggle={() => toggleCategory("英文急用短語")}
+        >
+          <EnglishPhraseCard />
+        </CollapsibleSection>
+      </View>
 
       {/* 📍 重要地址 */}
-      <CollapsibleSection
-        title="📍 重要地址"
-        expanded={!!expandedCategories["重要地址"]}
-        onToggle={() => toggleCategory("重要地址")}
-      >
-        <ImportantAddressCard />
-      </CollapsibleSection>
+      <View onLayout={handleSectionLayout("重要地址")}>
+        <CollapsibleSection
+          title="📍 重要地址"
+          expanded={!!expandedCategories["重要地址"]}
+          onToggle={() => toggleCategory("重要地址")}
+        >
+          <ImportantAddressCard />
+        </CollapsibleSection>
+      </View>
 
       {/* 行程注意事項 */}
       {CATEGORY_ORDER.map((category) => {
         const items = travelNotices.filter((notice) => notice.category === category);
         const expanded = !!expandedCategories[category];
         return (
-          <CollapsibleSection
+          <View key={category} onLayout={handleSectionLayout(category)}>
+            <CollapsibleSection
             key={category}
             title={category}
             expanded={expanded}
@@ -172,6 +225,7 @@ export default function TravelNoticesScreen() {
               ))}
             </View>
           </CollapsibleSection>
+          </View>
         );
       })}
     </ScrollView>
@@ -305,5 +359,21 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: "#334155",
     lineHeight: 18,
+  },
+  chipBarContainer: {
+    paddingVertical: 4,
+  },
+  chip: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "#CBD5E1",
+    backgroundColor: "#FFFFFF",
+    marginRight: 8,
+  },
+  chipText: {
+    fontSize: 13,
+    color: "#475569",
   },
 });
