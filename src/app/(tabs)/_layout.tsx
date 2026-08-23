@@ -22,6 +22,24 @@ export default function TabsLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="spots"
+        options={{
+          title: "景點百科",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="book" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="shopping"
+        options={{
+          title: "購物指南",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="bag" size={size} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
