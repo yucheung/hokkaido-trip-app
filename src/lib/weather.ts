@@ -185,10 +185,11 @@ export async function fetchWeather(
     const json: unknown = await response.json();
     validateForecast(json);
 
-    let index = json.daily.time.indexOf(tripDate);
+    const index = json.daily.time.indexOf(tripDate);
     if (index === -1) {
-      console.warn(`fetchWeather: tripDate ${tripDate} 不在回傳的 daily.time 中,改用 index 0`);
-      index = 0;
+      throw new WeatherValidationError(
+        `fetchWeather: tripDate ${tripDate} 不在回傳的 daily.time 中 (收到 [${json.daily.time.join(", ")}])`,
+      );
     }
     const weatherCode = json.daily.weather_code[index];
 
@@ -219,11 +220,11 @@ function isValidCacheEntry(value: unknown): value is DailyForecast {
     isValidIsoDate(v.fetchedAt) &&
     typeof v.weatherCode === "number" &&
     typeof v.weatherDescription === "string" &&
-    Number.isFinite(v.high) &&
-    Number.isFinite(v.low) &&
-    Number.isFinite(v.precipitationProbability) &&
-    Number.isFinite(v.windSpeedMax) &&
-    Number.isFinite(v.uvIndexMax)
+    isFiniteInRange(v.high, -50, 60) &&
+    isFiniteInRange(v.low, -50, 60) &&
+    isFiniteInRange(v.precipitationProbability, 0, 100) &&
+    isFiniteInRange(v.windSpeedMax, 0, 300) &&
+    isFiniteInRange(v.uvIndexMax, 0, 15)
   );
 }
 

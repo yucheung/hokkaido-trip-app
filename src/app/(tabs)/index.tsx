@@ -290,13 +290,22 @@ export default function TodayItineraryScreen() {
     return () => controller.abort();
   }, [fetchDay]);
 
+  const gpsControllerRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    return () => { gpsControllerRef.current?.abort(); };
+  }, []);
+
   const handleUseGps = useCallback(async (day: number, tripDate: string) => {
+    gpsControllerRef.current?.abort();
+    const controller = new AbortController();
+    gpsControllerRef.current = controller;
     setGpsState((prev) => ({ ...prev, [day]: { ...prev[day], loading: true, message: undefined } }));
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
     try {
       const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        if (mountedRef.current) {
+      if (status !== "granted" || controller.signal.aborted) {
+        if (mountedRef.current && !controller.signal.aborted) {
           setGpsState((prev) => ({
             ...prev,
             [day]: { loading: false, message: "無法取得目前位置,已顯示行程預設地點天氣" },
@@ -312,11 +321,15 @@ export default function TodayItineraryScreen() {
         Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced }),
         timeout,
       ]);
-      const forecast = await fetchWeather(day, position.coords.latitude, position.coords.longitude, tripDate);
-      if (mountedRef.current) {
+      if (controller.signal.aborted) return;
+      const forecast = await fetchWeather(
+        day, position.coords.latitude, position.coords.longitude, tripDate, controller.signal,
+      );
+      if (mountedRef.current && !controller.signal.aborted) {
         setGpsState((prev) => ({ ...prev, [day]: { forecast, loading: false } }));
       }
     } catch (error) {
+      if (controller.signal.aborted) return;
       console.error(`GPS定位或天氣抓取失敗 (Day ${day})`, error);
       if (mountedRef.current) {
         const message =
