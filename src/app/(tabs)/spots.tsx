@@ -72,7 +72,7 @@ export default function SpotsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F1F5F9",
+    backgroundColor: "#F5F3FF",
   },
   searchRow: {
     flexDirection: "row",
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#E2E8F0",
   },
   dayChipActive: {
-    backgroundColor: "#2563EB",
+    backgroundColor: "#7C3AED",
   },
   dayChipText: {
     fontSize: 13,

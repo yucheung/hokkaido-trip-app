@@ -110,6 +110,24 @@ export interface ImportantAddress {
   note?: string;
 }
 
+// 景點封面圖（靜態 require，檔名對應 Spot.id）
+export const spotImages: Record<string, any> = {
+  "hakodateyama": require("@/assets/images/hakodateyama.jpg"),
+  "goryokaku": require("@/assets/images/goryokaku.jpg"),
+  "hakodate-asaichi": require("@/assets/images/hakodate-asaichi.jpg"),
+  "nixe-park": require("@/assets/images/nixe-park.jpg"),
+  "jigokudani": require("@/assets/images/jigokudani.jpg"),
+  "farm-tomita": require("@/assets/images/farm-tomita.jpg"),
+  "shikisai-no-oka": require("@/assets/images/shikisai-no-oka.jpg"),
+  "tanukikoji": require("@/assets/images/tanukikoji.jpg"),
+  "otaru-canal": require("@/assets/images/otaru-canal.jpg"),
+  "showa-shinzan": require("@/assets/images/showa-shinzan.jpg"),
+  "toyako-fireworks": require("@/assets/images/toyako-fireworks.jpg"),
+  "onuma-park": require("@/assets/images/onuma-park.jpg"),
+  "kanemori": require("@/assets/images/kanemori.jpg"),
+  "trappistine-convent": require("@/assets/images/trappistine-convent.jpg"),
+};
+
 export const trips: Trip[] = rawData.trips;
 export const spots: Spot[] = rawData.spots;
 export const shoppingGuide: ShoppingGuideItem[] = rawData.shoppingGuide as ShoppingGuideItem[];

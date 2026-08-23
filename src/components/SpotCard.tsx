@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 import type { Spot } from "@/data";
+import { spotImages } from "@/data";
 
 function SpotSection({
   icon,
@@ -30,13 +31,19 @@ function SpotSection({
 }
 
 export function SpotCard({ spot }: { spot: Spot }) {
+  const image = spotImages[spot.id];
   return (
     <View style={styles.card}>
-      <Text style={styles.name}>{spot.name}</Text>
-      <Text style={styles.tagline}>{spot.tagline}</Text>
-      <SpotSection icon="🍡" title="推薦美食" items={spot.mustEat} />
-      <SpotSection icon="📸" title="拍照/看點建議" items={spot.mustSee} />
-      <SpotSection icon="💡" title="小提醒" items={spot.tips} />
+      {image ? (
+        <Image source={image} style={styles.cover} resizeMode="cover" />
+      ) : null}
+      <View style={styles.body}>
+        <Text style={styles.name}>{spot.name}</Text>
+        <Text style={styles.tagline}>{spot.tagline}</Text>
+        <SpotSection icon="🍡" title="推薦美食" items={spot.mustEat} />
+        <SpotSection icon="📸" title="拍照/看點建議" items={spot.mustSee} />
+        <SpotSection icon="💡" title="小提醒" items={spot.tips} />
+      </View>
     </View>
   );
 }
@@ -45,13 +52,22 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "#FFFFFF",
     borderRadius: 14,
-    padding: 16,
+    overflow: "hidden",
     gap: 12,
     shadowColor: "#000",
     shadowOpacity: 0.06,
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 2 },
     elevation: 2,
+  },
+  cover: {
+    width: "100%",
+    height: 180,
+    backgroundColor: "#EDE9FE",
+  },
+  body: {
+    padding: 16,
+    gap: 12,
   },
   name: {
     fontSize: 18,
@@ -81,7 +97,7 @@ const styles = StyleSheet.create({
   bullet: {
     fontSize: 13,
     fontWeight: "700",
-    color: "#2563EB",
+    color: "#7C3AED",
   },
   itemText: {
     flex: 1,
