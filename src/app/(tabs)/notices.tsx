@@ -95,8 +95,9 @@ export default function TravelNoticesScreen() {
   };
 
   const handleSectionLayout = (key: string) => (e: { nativeEvent: { layout: { y: number } } } | null) => {
-    if (e?.nativeEvent?.layout != null) {
-      setSectionOffsets((prev) => ({ ...prev, [key]: e.nativeEvent.layout.y }));
+    const y = e?.nativeEvent?.layout?.y;
+    if (y != null) {
+      setSectionOffsets((prev) => ({ ...prev, [key]: y }));
     }
   };
 
