@@ -136,9 +136,9 @@ const styles = StyleSheet.create({
     color: "#B45309",
   },
   sourceNote: {
-    fontSize: 11,
-    color: "#94A3B8",
-    lineHeight: 15,
+    fontSize: 12,
+    color: "#475569",
+    lineHeight: 18,
     borderTopWidth: 1,
     borderTopColor: "#E2E8F0",
     paddingTop: 6,

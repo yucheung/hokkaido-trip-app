@@ -1,7 +1,8 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Stack, useLocalSearchParams } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { SpotCard } from "@/components/SpotCard";
 import { spots, trips } from "@/data";
@@ -42,6 +43,11 @@ export default function DayDetailScreen() {
   const { day } = useLocalSearchParams<{ day: string }>();
   const trip = trips.find((item) => item.day === Number(day));
   const [activeSpotId, setActiveSpotId] = useState<string | null>(null);
+  const insets = useSafeAreaInsets();
+
+  useEffect(() => {
+    setActiveSpotId(null);
+  }, [trip?.day]);
 
   if (!trip) {
     return (
@@ -56,7 +62,10 @@ export default function DayDetailScreen() {
     .map((step) => step.trim())
     .filter((step) => step.length > 0);
 
-  const activeSpot = activeSpotId ? spots.find((spot) => spot.id === activeSpotId) ?? null : null;
+  const activeSpot =
+    activeSpotId && trip.relatedSpotIds.includes(activeSpotId)
+      ? spots.find((spot) => spot.id === activeSpotId) ?? null
+      : null;
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
@@ -156,7 +165,12 @@ export default function DayDetailScreen() {
                 <Ionicons name="close" size={24} color="#0F172A" />
               </Pressable>
             </View>
-            <ScrollView contentContainerStyle={styles.modalScrollContent}>
+            <ScrollView
+              contentContainerStyle={[
+                styles.modalScrollContent,
+                { paddingBottom: 16 + insets.bottom },
+              ]}
+            >
               {activeSpot && <SpotCard spot={activeSpot} />}
             </ScrollView>
           </View>
