@@ -94,8 +94,10 @@ export default function TravelNoticesScreen() {
     }
   };
 
-  const handleSectionLayout = (key: string) => (e: { nativeEvent: { layout: { y: number } } }) => {
-    setSectionOffsets((prev) => ({ ...prev, [key]: e.nativeEvent.layout.y }));
+  const handleSectionLayout = (key: string) => (e: { nativeEvent: { layout: { y: number } } } | null) => {
+    if (e?.nativeEvent?.layout != null) {
+      setSectionOffsets((prev) => ({ ...prev, [key]: e.nativeEvent.layout.y }));
+    }
   };
 
   const toggleCategory = (category: string) => {
