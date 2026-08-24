@@ -4,7 +4,7 @@ import {
   getInfoAsync,
   deleteAsync,
   makeDirectoryAsync,
-} from "expo-file-system";
+} from "expo-file-system/legacy";
 import type { TravelerProfile } from "@/data";
 
 const STORAGE_KEY = "travelerProfiles";

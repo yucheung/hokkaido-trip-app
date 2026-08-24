@@ -13,7 +13,7 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import {
   copyAsync,
-} from "expo-file-system";
+} from "expo-file-system/legacy";
 import * as LocalAuthentication from "expo-local-authentication";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import type { TravelerProfile } from "@/data";
