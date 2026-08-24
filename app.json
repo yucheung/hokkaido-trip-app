@@ -37,7 +37,7 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true,
-      "baseUrl": "/hokkaido-app"
+      "baseUrl": "/hokkaido-trip-app"
     },
     "extra": {
       "router": {},
