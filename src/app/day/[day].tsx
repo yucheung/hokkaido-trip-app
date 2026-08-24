@@ -11,6 +11,10 @@ import { MEAL_ICONS, MEAL_LABELS, mealStatusColor, type MealType } from "@/lib/m
 
 const MEAL_ORDER: MealType[] = ["breakfast", "lunch", "dinner"];
 
+export function generateStaticParams() {
+  return trips.map(({ day }) => ({ day: String(day) }));
+}
+
 // 行程步驟文字與 Spot.id 之間沒有共通鍵，且原始行程文字用字偶有出入（如「五稜廓」vs 資料中的「五稜郭」），
 // 故以人工整理的關鍵字比對步驟文字是否指向 trip.relatedSpotIds 中的某個景點。
 const SPOT_STEP_KEYWORDS: Record<string, string[]> = {

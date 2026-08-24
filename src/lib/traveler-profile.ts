@@ -1,10 +1,4 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { documentDirectory } from "expo-file-system/legacy";
-import {
-  getInfoAsync,
-  deleteAsync,
-  makeDirectoryAsync,
-} from "expo-file-system/legacy";
 import type { TravelerProfile } from "@/data";
 
 const STORAGE_KEY = "travelerProfiles";
@@ -41,21 +35,4 @@ export function createDefaultProfiles(): TravelerProfile[] {
     emergencyContactName: "",
     emergencyContactPhone: "",
   }));
-}
-
-export async function deletePassportPhoto(uri: string): Promise<void> {
-  try {
-    const info = await getInfoAsync(uri);
-    if (info.exists) {
-      await deleteAsync(uri);
-    }
-  } catch (error) {
-    console.error("刪除護照照片失敗", error);
-  }
-}
-
-export const PASSPORT_PHOTOS_DIR = `${documentDirectory}passportPhotos/`;
-
-export async function ensurePassportDir(): Promise<void> {
-  await makeDirectoryAsync(PASSPORT_PHOTOS_DIR, { intermediates: true });
 }
