@@ -50,7 +50,10 @@ export default function PassportPhotoFeature({
       const destUri = `${PASSPORT_PHOTOS_DIR}${filename}`;
       await copyAsync({ from: sourceUri, to: destUri });
       if (photoUri) {
-        await deletePassportPhoto(photoUri);
+        const deleted = await deletePassportPhoto(photoUri);
+        if (!deleted) {
+          console.warn("舊護照照片刪除失敗,可能留下孤立檔案", photoUri);
+        }
       }
       onPhotoChange(destUri);
     } catch (error) {
@@ -81,7 +84,10 @@ export default function PassportPhotoFeature({
       const destUri = `${PASSPORT_PHOTOS_DIR}${filename}`;
       await copyAsync({ from: sourceUri, to: destUri });
       if (photoUri) {
-        await deletePassportPhoto(photoUri);
+        const deleted = await deletePassportPhoto(photoUri);
+        if (!deleted) {
+          console.warn("舊護照照片刪除失敗,可能留下孤立檔案", photoUri);
+        }
       }
       onPhotoChange(destUri);
     } catch (error) {
@@ -99,7 +105,11 @@ export default function PassportPhotoFeature({
         style: "destructive",
         onPress: async () => {
           try {
-            await deletePassportPhoto(photoUri);
+            const deleted = await deletePassportPhoto(photoUri);
+            if (!deleted) {
+              Alert.alert("刪除失敗", "護照照片刪除失敗,請稍後再試");
+              return;
+            }
             onPhotoChange(null);
           } catch (error) {
             console.error("刪除照片失敗", error);

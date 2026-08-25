@@ -11,13 +11,15 @@ export async function ensurePassportDir(): Promise<void> {
   await makeDirectoryAsync(PASSPORT_PHOTOS_DIR, { intermediates: true });
 }
 
-export async function deletePassportPhoto(uri: string): Promise<void> {
+export async function deletePassportPhoto(uri: string): Promise<boolean> {
   try {
     const info = await getInfoAsync(uri);
     if (info.exists) {
       await deleteAsync(uri);
     }
+    return true;
   } catch (error) {
-    console.error("刪除護照照片失敗", error);
+    console.warn("刪除護照照片失敗", error);
+    return false;
   }
 }
